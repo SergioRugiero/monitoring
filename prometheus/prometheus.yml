@@ -7,7 +7,7 @@ global:
   # Attach these labels to any time series or alerts when communicating with
   # external systems (federation, remote storage, Alertmanager).
   external_labels:
-      monitor: 'rpi-monitor'
+      monitor: 'monitor'
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -25,41 +25,32 @@ scrape_configs:
     static_configs:
       - targets: ['prometheus:9090']
 
-  - job_name: 'node'
+  - job_name: 'jenkins'
     scrape_interval: 10s
-    #static_configs:
-    #  - targets: ['192.168.1.4:9100']
+    static_configs:
+    - targets: ['192.168.0.15:9100']
     dns_sd_configs:
       - names:
         - 'node_exporter'
         type: 'A'
         port: 9100
+
   - job_name: 'cadvisor'
     scrape_interval: 10s
-    #static_configs:
-    #  - targets: ['cadvisor:8080']
+    static_configs:
+    - targets: ['cadvisor:8082']
     dns_sd_configs:
       - names:
         - 'cadvisor'
         type: 'A'
-        port: 8080
-  - job_name: 'traefik'
+        port: 8082
+
+  - job_name: 'test'
     scrape_interval: 10s
-    #static_configs:
-    #  - targets: ['traefik:8080']
+    static_configs:
+    - targets: ['node_exporter:9100']
     dns_sd_configs:
       - names:
-        - 'traefik'
+        - 'node_exporter'
         type: 'A'
-        port: 8080
-  - job_name: 'arm-exporter'
-    scrape_interval: 10s
-    #static_configs:
-    #  - targets: ['arm_exporter:9243']
-    dns_sd_configs:
-      - names:
-        - 'arm_exporter'
-        type: 'A'
-        port: 9243
-
-
+        port: 9100
