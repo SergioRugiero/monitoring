@@ -9,7 +9,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     depends_on:
-      - cadvisor
+    #  - cadvisor
       - node_exporter
     restart: unless-stopped
     ports:
