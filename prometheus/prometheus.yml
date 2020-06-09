@@ -30,11 +30,6 @@ scrape_configs:
     static_configs:
     - targets: ['10.255.248.73:9100']
 
-  - job_name: 'odoo'
-    scrape_interval: 10s
-    static_configs:
-    - targets: ['10.255.248.89:9100']
-
   - job_name: 'APP-TEST'
     scrape_interval: 10s
     static_configs:
@@ -44,11 +39,13 @@ scrape_configs:
     scrape_interval: 10s
     static_configs:
     - targets: ['10.255.248.83:9100']
-    
+
+  - job_name: 'Odoo'
+    scrape_interval: 10s
+    static_configs:
+    - targets: ['10.255.248.89:9100']
+
   - job_name: 'New-Middleware'
     scrape_interval: 10s
     static_configs:
     - targets: ['10.255.248.92:9100']
-    
-
-
