@@ -41,20 +41,20 @@ services:
       - --collector.filesystem.ignored-mount-points
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
 
-  cadvisor:
-    image: google/cadvisor
-    restart: unless-stopped
-    ports:
-      - 8082:8080
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-    command:
-      - --global_housekeeping_interval=30s
-      - --housekeeping_interval=5s
-      - --storage_duration=1m0s
+  # cadvisor:
+  #   image: google/cadvisor
+  #   restart: unless-stopped
+  #   ports:
+  #     - 8082:8080
+  #   volumes:
+  #     - /:/rootfs:ro
+  #     - /var/run:/var/run:rw
+  #     - /sys:/sys:ro
+  #     - /var/lib/docker/:/var/lib/docker:ro
+  #   command:
+  #     - --global_housekeeping_interval=30s
+  #     - --housekeeping_interval=5s
+  #     - --storage_duration=1m0s
 
   grafana:
     image: grafana/grafana:latest
