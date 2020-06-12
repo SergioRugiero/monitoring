@@ -40,12 +40,22 @@ scrape_configs:
     static_configs:
     - targets: ['10.255.248.83:9100']
 
-  - job_name: 'Odoo'
+  - job_name: 'odoo'
     scrape_interval: 10s
     static_configs:
     - targets: ['10.255.248.89:9100']
+
+  - job_name: 'odoo-cadvisor'
+    scrape_interval: 10s
+    static_configs:
+    - targets: ['10.255.248.89:9338']
 
   - job_name: 'New-Middleware'
     scrape_interval: 10s
     static_configs:
     - targets: ['10.255.248.92:9100']
+
+  - job_name: 'New-Middleware-cadvisor'
+    scrape_interval: 10s
+    static_configs:
+    - targets: ['10.255.248.92:9338']

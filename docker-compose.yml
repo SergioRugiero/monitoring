@@ -45,7 +45,7 @@ services:
     image: google/cadvisor
     restart: unless-stopped
     ports:
-      - 9082:8080
+      - 9338:9338
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
